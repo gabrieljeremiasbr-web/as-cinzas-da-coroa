@@ -8,20 +8,21 @@
 <title>As Cinzas da Coroa • RPG Medieval</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header class="hero">
+<body class="home-screen">
+<header class="hero" id="home">
   <div class="hero-inner">
     <div class="eyebrow">✦ CRÔNICAS DE VALDORIA ✦</div>
-    <div class="crest" aria-hidden="true">♛</div>
-    <h1>As Cinzas da Coroa</h1>
+    <div class="crest" aria-hidden="true">♛</div><div class="royal-line" aria-hidden="true">──── ◆ ────</div>
+    <h1>As Cinzas<br>da Coroa</h1>
     <p>Quando a última coroa se tornar cinzas, quem escreverá a história do reino?</p>
     <div class="roles" aria-label="Escolher área do RPG">
-      <button id="master" type="button">♛ Área do Mestre</button>
-      <button id="player" type="button">⚔ Área do Jogador</button>
+      <button id="master" type="button"><span class="role-symbol" aria-hidden="true">♛</span><span>Área do Mestre<small>Conduza a história</small></span></button>
+      <button id="player" type="button"><span class="role-symbol" aria-hidden="true">⚔</span><span>Área do Jogador<small>Viva sua aventura</small></span></button>
     </div>
     <p class="hero-hint">Escolha uma área para explorar sua aventura.</p>
   </div>
 </header>
+<div class="game-top"><button id="back-home" type="button">← Início</button><strong>As Cinzas da Coroa</strong><span id="role-label"></span></div>
 <div class="layout">
   <nav id="navigation" aria-label="Seções do RPG"></nav>
   <main id="app" aria-live="polite"></main>
