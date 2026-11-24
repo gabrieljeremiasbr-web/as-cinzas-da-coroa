@@ -25,7 +25,8 @@ if(t==='Base')return '<h2>Refúgio do viajante</h2><section class="panel"><div c
 function render(){const master=s.role==='Mestre';$('master').classList.toggle('active',master);$('player').classList.toggle('active',!master);$('navigation').innerHTML=TABS.filter(x=>master||x!=='NPCs').map(x=>b(x,'tab:'+x,s.tab===x?'active':'')).join('');$('app').innerHTML=(notice?'<div class="notice">'+e(notice)+'</div>':'')+page()}
 document.addEventListener('input',ev=>{if(/^at[0-5]$/.test(ev.target.id)){let x=$('remaining');if(x)x.textContent='Pontos restantes: '+(budget(s.hero)-STATS.reduce((a,_,i)=>a+n('at'+i),0))}});
 document.addEventListener('change',ev=>{if(ev.target.id==='portrait'&&ev.target.files[0]){const file=ev.target.files[0];if(file.size>1000000){notice='Escolha uma imagem menor que 1 MB.';render();return}const reader=new FileReader();reader.onload=()=>{s.hero.portrait=reader.result;persist();render()};reader.readAsDataURL(file)}});
-$('master').onclick=()=>{s.role='Mestre';persist();render()};$('player').onclick=()=>{s.role='Jogador';if(s.tab==='NPCs')s.tab='Reino';persist();render()};
+function enterRole(role){s.role=role;s.tab=role==='Mestre'?'NPCs':'Ficha';edit=-1;notice='Área '+(role==='Mestre'?'do mestre':'do jogador')+' aberta.';persist();render();$('app').scrollIntoView({behavior:'smooth',block:'start'});}
+$('master').onclick=()=>enterRole('Mestre');$('player').onclick=()=>enterRole('Jogador');
 document.addEventListener('click',ev=>{const btn=ev.target.closest('button[data-action]');if(!btn)return;const [a,vv]=btn.dataset.action.split(':'),i=Number(vv),h=s.hero;notice='';
 if(a==='tab')s.tab=vv;
 const log=x=>{notice=x;s.mechanics.log.unshift(x);s.mechanics.log=s.mechanics.log.slice(0,30)};
